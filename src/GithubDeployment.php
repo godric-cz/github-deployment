@@ -69,15 +69,9 @@ class GithubDeployment {
      */
     private function download($file, $to) {
         $repo = $this->repo;
-        $userAgent = substr($repo, (strrpos($repo, '/') ?: -1) + 1);
-        $c = curl_init();
-        curl_setopt_array($c, [
-            CURLOPT_URL         =>  "https://api.github.com/repos/$repo/contents/$file",
-            CURLOPT_HTTPHEADER  =>  ["User-Agent: $userAgent", 'Accept: application/vnd.github.v3.raw'],
-            CURLOPT_FILE        =>  fopen($to, 'w'),
-        ]);
-        curl_exec($c);
-        curl_close($c);
+        $branch = 'master';
+        $efile = rawurlencode($file);
+        copy("https://raw.githubusercontent.com/$repo/$branch/$efile", $to);
     }
 
     /**
