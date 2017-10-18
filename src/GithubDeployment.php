@@ -7,6 +7,7 @@ use \Exception;
 class GithubDeployment {
 
     private
+        $commit, // latest commit hash
         $repo,
         $target,
         $secret;
@@ -73,9 +74,10 @@ class GithubDeployment {
      */
     private function download($file, $to) {
         $repo = $this->repo;
-        $branch = 'master';
+        $commit = $this->commit;
         $efile = rawurlencode($file);
-        copy("https://raw.githubusercontent.com/$repo/$branch/$efile", $to);
+        $success = copy("https://raw.githubusercontent.com/$repo/$commit/$efile", $to);
+        if(!$success) throw new Exception("failed to download '$file'");
     }
 
     /**
@@ -123,6 +125,7 @@ class GithubDeployment {
         $this->verify($rawInput, $signatureHeader);
         $data = $this->readData($payload);
         $this->repo = $data->repository->full_name;
+        $this->commit = $data->head_commit->id;
         $changes = $this->readCommits($data->commits);
         $this->apply($changes);
     }
