@@ -2,7 +2,7 @@
 
 ## Usage
 
-1. Install with: `composer install some_package` (TODO)
+1. Install with: `composer require godric/github-deployment dev-master`
 2. Create deployment script, for example `deploy.php` with following contents:
 
 ```php
@@ -23,7 +23,6 @@ require 'vendor/autoload.php';
 
 ## Features
 
-- TODO: installtion with composer.
 - No need for git or `system()` calls on remote server – should work well with shared hosts.
 - Works with pushes to master as well as pull-request merging.
 - Multiple commits in one push are also OK.
