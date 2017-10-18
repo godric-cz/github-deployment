@@ -2,6 +2,8 @@
 
 namespace Godric\GithubDeployment;
 
+use \Exception;
+
 class GithubDeployment {
 
     private
