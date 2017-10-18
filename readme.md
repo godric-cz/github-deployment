@@ -27,7 +27,7 @@ require 'vendor/autoload.php';
 - Works with pushes to master as well as pull-request merging.
 - Multiple commits in one push are also OK.
 - Current contents of remote directory are not modified – only changes in commits are applied.
-- TODO: `composer install` on remote before updating files (if repository is using composer).
+- Automatic `composer install` on remote before updating files.
 - TODO: custom _before_ or _after_ scripts (for example DB migrations).
 
 ## Requirements

@@ -3,5 +3,8 @@
     "description": "Deployment with GitHub and pure PHP. No git on server or ftp needed.",
     "autoload": {
         "psr-4": { "Godric\\GithubDeployment\\": "src/" }
+    },
+    "require": {
+        "composer/composer": "^1.5"
     }
 }

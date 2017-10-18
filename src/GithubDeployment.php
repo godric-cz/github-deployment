@@ -127,7 +127,9 @@ class GithubDeployment {
         $this->repo = $data->repository->full_name;
         $this->commit = $data->head_commit->id;
         $changes = $this->readCommits($data->commits);
+
         $this->apply($changes);
+        Composer::installTo($this->target); // TODO composer.json & lock must be downloaded first - split apply method in future
     }
 
     /**
