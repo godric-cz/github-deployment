@@ -1,5 +1,7 @@
 <?php
 
+namespace Godric\GithubDeployment;
+
 class GithubDeployment {
 
     private
@@ -92,7 +94,7 @@ class GithubDeployment {
             }
         }
 
-        $diff = new stdClass;
+        $diff = new \stdClass;
         $diff->toReplace = array_keys(array_filter($toReplace));
         $diff->toRemove  = array_keys(array_filter($toRemove));
         return $diff;
