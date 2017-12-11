@@ -11,6 +11,9 @@ use Symfony\Component\Console\Input\ArrayInput;
 class Composer {
 
     static function installTo($target) {
+        // skip, if composer is not used in target
+        if(!is_file($target . '/composer.json')) return;
+
         $composerHome = $target . '/vendor/composer_home';
         if(!is_dir($composerHome)) mkdir($composerHome);
 
